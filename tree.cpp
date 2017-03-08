@@ -3,8 +3,8 @@ using namespace std;
 
 struct node{
 	int value;
-	struct node *leftChild = NULL;
-	struct node *rightChild = NULL;
+	struct node *leftChild;
+	struct node *rightChild;
 }
 
 
@@ -13,6 +13,7 @@ class tree
 public:
 	void insert_node(int node_key);
 	node *search(int node_key);
+	void preOrder(node *n);
 
 private:
 	void *search(int node_key, node *leaf);
@@ -40,8 +41,8 @@ void tree::insert_node(int node_key, node *leaf)
 		{
 			leaf->leftChild = new node;
 			leaf->leftChild->value = node_key;
-			//left->left->left = NULL;
-			//left->left->right = NULL;
+			leftChild->leftChild->leftChild = NULL;
+			leftChild->leftChild->rightChild = NULL;
 		}
 	}
 
@@ -53,8 +54,8 @@ void tree::insert_node(int node_key, node *leaf)
 		{
 			leaf->rightChild = new node;
 			leaf->rightChild->value = node_key;
-			//left->right->left = NULL;
-			//left->right->right = NULL;
+			leftChild->rightChild->leftChild = NULL;
+			leftChild->rightChild->rightChild = NULL;
 		}
 	}
 }
@@ -67,7 +68,8 @@ void tree::insert_node(int node_key)
 	{
 		root = new node;
 		root->value = node_key;
-		//root->left = NULL;
+		root->leftChild = NULL;
+		root->rightChild = NULL;
 	}
 }
 
@@ -88,4 +90,6 @@ node *tree::search(int node_key)
 {
 	return search(key, root);
 }
+
+
 
