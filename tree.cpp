@@ -158,8 +158,9 @@ int main()
 	binaryTree.preOrder();
 
 	//search
-	//node *n = binaryTree.search(14);
-
+	node *n = binaryTree.search(14);
+	cout <<"node value is "<< n->value <<endl;
+	cout <<"with left child " << n->leftChild->value <<" and with right child " << n->rightChild->value << endl;
 
 
 
