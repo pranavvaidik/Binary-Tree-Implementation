@@ -91,5 +91,13 @@ node *tree::search(int node_key)
 	return search(key, root);
 }
 
-
+void tree::preOrder(node *n)
+{
+	if (n != NULL)
+	{
+		cout << n->value << ", ";
+		preOrder(n->leftChild);
+		preOrder(n->rightChild);
+	}
+}
 
