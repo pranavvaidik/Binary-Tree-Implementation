@@ -32,27 +32,27 @@ tree::~tree()
 
 void tree::insert_node(int node_key, node *leaf)
 {
-	if(node_key < leaf->key_value)
+	if(node_key < leaf->value)
 	{
 		if(leaf->leftChild != NULL) 
 			insert(node_key, leaf->leftChild);
 		else
 		{
 			leaf->leftChild = new node;
-			leaf->leftChild->key_value = node_key;
+			leaf->leftChild->value = node_key;
 			//left->left->left = NULL;
 			//left->left->right = NULL;
 		}
 	}
 
-	else if(node_key < leaf->key_value)
+	else if(node_key < leaf->value)
 	{
 		if(leaf->rightChild != NULL) 
 			insert(node_key, leaf->rightChild);
 		else
 		{
 			leaf->rightChild = new node;
-			leaf->rightChild->key_value = node_key;
+			leaf->rightChild->value = node_key;
 			//left->right->left = NULL;
 			//left->right->right = NULL;
 		}
@@ -66,10 +66,26 @@ void tree::insert_node(int node_key)
 	else
 	{
 		root = new node;
-		root->key_value = key;
+		root->value = node_key;
 		//root->left = NULL;
 	}
 }
 
+node *tree::search(int node_key, node *leaf)
+{
+	if(leaf!=NULL)
+	{
+		if(key == leaf->value)
+			return leaf;
+		else if(key < leaf->value)
+			return search(node_key,leaf->leftChild);
+		else return search(node_key,leaf->rightChild);
+	}
+	else return NULL;
+}
 
+node *tree::search(int node_key)
+{
+	return search(key, root);
+}
 
