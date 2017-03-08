@@ -14,6 +14,7 @@ public:
 	void insert_node(int node_key);
 	node *search(int node_key);
 	void preOrder(node *n);
+	int height(node *n);
 
 private:
 	void *search(int node_key, node *leaf);
@@ -98,6 +99,20 @@ void tree::preOrder(node *n)
 		cout << n->value << ", ";
 		preOrder(n->leftChild);
 		preOrder(n->rightChild);
+	}
+}
+
+int tree::height(node *n)
+{
+	if (n==NULL)
+		return 0;
+	else
+	{
+		int leftHeight = height(n->leftChild);
+		int rightHeight = height(n->rightChild);
+		if (leftHeight > rightHeight)
+			return leftHeight + 1;
+		else return rightHeight + 1;
 	}
 }
 
