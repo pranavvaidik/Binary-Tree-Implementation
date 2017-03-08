@@ -163,10 +163,10 @@ int main()
 	cout <<"with left child " << n->leftChild->value <<" and with right child " << n->rightChild->value << endl;
 
 
-
-
-
-
+	//height
+	cout << "height of this tree is " << binaryTree.height() << endl;
+	binaryTree.insert_node(12);
+	cout << "height of this tree after insertion of new node is " << binaryTree.height() << endl;
 
 
 
